@@ -7,7 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-// Zweite geöffnete Klasse -->
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//// Zweite geöffnete Klasse --> Öffnet einen Frame mit Auswahl Hosten oder Beitreten
 
 public class Spielauswahl implements ActionListener {
 	
@@ -72,6 +73,10 @@ public class Spielauswahl implements ActionListener {
 		auswahl.repaint();
 	}
 	
+	// Hosten öffnet ein weiteren Frame mit der die Spieleranzahl eingestellt wird. 
+	// Durch die Auswahl einer Spieleranzahl, werden die Threads Server und Client erstellt und gestartet
+	
+	
 	public void host() {
 
 		host = new JFrame("Auswahl");
@@ -116,6 +121,9 @@ public class Spielauswahl implements ActionListener {
 		host.repaint();
 	}
 	
+	// Beitreten öffnet ein weiteren Frame in dem die IP-Adresse des Hostes eingegeben werden kann
+	// Durch den Joinen Button wird ein Thread Client gestartet und ausgeführt
+	
 	public void join() {
 		
 		join = new JFrame("Auswahl");
@@ -148,6 +156,9 @@ public class Spielauswahl implements ActionListener {
 		join.add(hintergrund4);
 		
 	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////
+	// ActionListener
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -178,35 +189,35 @@ public class Spielauswahl implements ActionListener {
 			host.dispose();
 			Thread server = new Thread(new Server(1));
 			server.start();
-			Thread clienthost = new Thread(new Client("localhost"));
+			Thread clienthost = new Thread(new Host("localhost"));
 			clienthost.start();
 		}
 		if (e.getSource() == spieler2) {
 			host.dispose();
 			Thread server = new Thread(new Server(2));
 			server.start();
-			Thread clienthost = new Thread(new Client("localhost"));
+			Thread clienthost = new Thread(new Host("localhost"));
 			clienthost.start();
 		}
 		if (e.getSource() == spieler3) {
 			host.dispose();
 			Thread server = new Thread(new Server(3));
 			server.start();
-			Thread clienthost = new Thread(new Client("localhost"));
+			Thread clienthost = new Thread(new Host("localhost"));
 			clienthost.start();
 		}
 		if (e.getSource() == spieler4) {
 			host.dispose();
 			Thread server = new Thread(new Server(4));
 			server.start();
-			Thread clienthost = new Thread(new Client("localhost"));
+			Thread clienthost = new Thread(new Host("localhost"));
 			clienthost.start();
 		}
 		
 		if (e.getSource() == ipsuche){
 			join.dispose();
-			Client c = new Client(ipadresseangeben.getText());
-			c.starting();
+			Thread c = new Thread(new Client1(ipadresseangeben.getText()));
+			c.start();
 		}
 	}
 }

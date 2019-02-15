@@ -186,7 +186,7 @@ public class CheckBoxen {
 	public Kreuzung kz26;
 	public Kreuzung kz27;
 	
-	public Weg wg1;
+	/*public Weg wg1;
 	public Weg wg2;
 	public Weg wg3;
 	public Weg wg4;
@@ -224,7 +224,7 @@ public class CheckBoxen {
 	public Weg wg36;
 	public Weg wg37;
 	public Weg wg38;
-	public Weg wg39;
+	public Weg wg39;*/
 
 	public void boxenladen(JFrame spielbrett) {
 
@@ -1069,6 +1069,8 @@ public class CheckBoxen {
 
 	public void kreuzungenerstellen() {
 		
+		ArrayList<Kreuzung> kreuz = new ArrayList<Kreuzung>();
+		
 		kz1 = new Kreuzung("Holz",wuerfelzahlen.zahl1,box1,do1,1);
 		kz2 = new Kreuzung("Getreide",wuerfelzahlen.zahl2,box2,do2,2);
 		kz3 = new Kreuzung("Stein",wuerfelzahlen.zahl3,box3,do3,3);
@@ -1102,6 +1104,7 @@ public class CheckBoxen {
 		kz26 = new Kreuzung("Stein",wuerfelzahlen.zahl7,"Getreide",wuerfelzahlen.zahl10,"Wolle",wuerfelzahlen.zahl11,box26,do26,26);
 		kz27 = new Kreuzung("Wolle",wuerfelzahlen.zahl11,box27,do27,27);
 		
+		
 		kreuz.add(kz1);
 		kreuz.add(kz2);
 		kreuz.add(kz3);
@@ -1134,43 +1137,45 @@ public class CheckBoxen {
 	
 	public void wegeerstellen() {
 		
-		wg1 = new Weg(kz1,kz4,weg1,we1,1);
-		wg2 = new Weg(kz1,kz5,weg2,we2,2);
-		wg3 = new Weg(kz2,kz5,weg3,we3,3);
-		wg4 = new Weg(kz2,kz6,weg4,we4,4);
-		wg5 = new Weg(kz3,kz6,weg5,we5,5);
-		wg6 = new Weg(kz3,kz7,weg6,we6,6);
+		ArrayList<Weg> weg = new ArrayList<Weg>();
 		
-		wg7 = new Weg(kz4,kz8,weg7,we7,7);
-		wg8 = new Weg(kz5,kz9,weg8,we8,8);
-		wg9 = new Weg(kz6,kz10,weg9,we9,9);
-		wg10 = new Weg(kz7,kz11,weg10,we10,10);
+		Weg wg1 = new Weg(kz1,kz4,weg1,we1,1);
+		Weg wg2 = new Weg(kz1,kz5,weg2,we2,2);
+		Weg wg3 = new Weg(kz2,kz5,weg3,we3,3);
+		Weg wg4 = new Weg(kz2,kz6,weg4,we4,4);
+		Weg wg5 = new Weg(kz3,kz6,weg5,we5,5);
+		Weg wg6 = new Weg(kz3,kz7,weg6,we6,6);
 		
-		wg11 = new Weg(kz8,kz12,weg11,we11,11);
-		wg12 = new Weg(kz8,kz13,weg12,we12,12);
-		wg13 = new Weg(kz9,kz13,weg13,we13,13);
-		wg14 = new Weg(kz9,kz14,weg14,we14,14);
-		wg15 = new Weg(kz10,kz14,weg15,we15,15);
-		wg16 = new Weg(kz10,kz15,weg16,we16,16);
-		wg17 = new Weg(kz11,kz15,weg17,we17,17);
-		wg18 = new Weg(kz11,kz16,weg18,we18,18);
+		Weg wg7 = new Weg(kz4,kz8,weg7,we7,7);
+		Weg wg8 = new Weg(kz5,kz9,weg8,we8,8);
+		Weg wg9 = new Weg(kz6,kz10,weg9,we9,9);
+		Weg wg10 = new Weg(kz7,kz11,weg10,we10,10);
 		
-		wg19 = new Weg(kz12,kz17,weg19,we19,19);
-		wg20 = new Weg(kz13,kz18,weg20,we20,20);
-		wg21 = new Weg(kz14,kz19,weg21,we21,21);
-		wg22 = new Weg(kz15,kz20,weg22,we22,22);
-		wg23 = new Weg(kz16,kz21,weg23,we23,23);
+		Weg wg11 = new Weg(kz8,kz12,weg11,we11,11);
+		Weg wg12 = new Weg(kz8,kz13,weg12,we12,12);
+		Weg wg13 = new Weg(kz9,kz13,weg13,we13,13);
+		Weg wg14 = new Weg(kz9,kz14,weg14,we14,14);
+		Weg wg15 = new Weg(kz10,kz14,weg15,we15,15);
+		Weg wg16 = new Weg(kz10,kz15,weg16,we16,16);
+		Weg wg17 = new Weg(kz11,kz15,weg17,we17,17);
+		Weg wg18 = new Weg(kz11,kz16,weg18,we18,18);
 		
-		wg24 = new Weg(kz17,kz22,weg24,we24,24);
-		wg25 = new Weg(kz17,kz23,weg25,we25,25);
-		wg26 = new Weg(kz18,kz23,weg26,we26,26);
-		wg27 = new Weg(kz18,kz24,weg27,we27,27);
-		wg28 = new Weg(kz19,kz24,weg28,we28,28);
-		wg29 = new Weg(kz19,kz25,weg29,we29,29);
-		wg30 = new Weg(kz20,kz25,weg30,we30,30);
-		wg31 = new Weg(kz20,kz26,weg31,we31,31);
-		wg32 = new Weg(kz21,kz26,weg32,we32,32);
-		wg33 = new Weg(kz21,kz27,weg33,we33,33);
+		Weg wg19 = new Weg(kz12,kz17,weg19,we19,19);
+		Weg wg20 = new Weg(kz13,kz18,weg20,we20,20);
+		Weg wg21 = new Weg(kz14,kz19,weg21,we21,21);
+		Weg wg22 = new Weg(kz15,kz20,weg22,we22,22);
+		Weg wg23 = new Weg(kz16,kz21,weg23,we23,23);
+		
+		Weg wg24 = new Weg(kz17,kz22,weg24,we24,24);
+		Weg wg25 = new Weg(kz17,kz23,weg25,we25,25);
+		Weg wg26 = new Weg(kz18,kz23,weg26,we26,26);
+		Weg wg27 = new Weg(kz18,kz24,weg27,we27,27);
+		Weg wg28 = new Weg(kz19,kz24,weg28,we28,28);
+		Weg wg29 = new Weg(kz19,kz25,weg29,we29,29);
+		Weg wg30 = new Weg(kz20,kz25,weg30,we30,30);
+		Weg wg31 = new Weg(kz20,kz26,weg31,we31,31);
+		Weg wg32 = new Weg(kz21,kz26,weg32,we32,32);
+		Weg wg33 = new Weg(kz21,kz27,weg33,we33,33);
 		
 //		wg34 = new Weg(kz22,kz28,weg34,we34,34);
 //		wg35 = new Weg(kz23,kz29,weg35,we35,35);

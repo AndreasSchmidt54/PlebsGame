@@ -189,7 +189,7 @@ public class Client implements Runnable {
 		spieleranzeige = new JTextField("");
 		spieleranzeige.setBounds(60, 140, 240, 35);
 		spieleranzeige.setHorizontalAlignment(JTextField.CENTER);
-		spieleranzeige.setEditable(false);
+		spieleranzeige.setEditable(true);
 		spieleranzeige.setOpaque(false);
 		frame.add(spieleranzeige);
 
@@ -199,6 +199,8 @@ public class Client implements Runnable {
 		connectedvon.setEditable(false);
 		connectedvon.setOpaque(false);
 		frame.add(connectedvon);
+		
+		
 
 		hintergrund1 = new JLabel("");
 		ImageIcon img = new ImageIcon(getClass().getResource("/Siedler2.jpg"));
@@ -208,9 +210,7 @@ public class Client implements Runnable {
 
 		frame.repaint();
 
-		if (!connectToServer()) {
-
-		}
+		if (!connectToServer()) {}
 
 		Thread t = new Thread(new MessagesFromServerListener());
 		t.start();
@@ -246,6 +246,7 @@ public class Client implements Runnable {
 	}
 
 	public class MessagesFromServerListener implements Runnable {
+		
 		
 		public void werhatgewonnen() {
 			
@@ -650,21 +651,35 @@ public class Client implements Runnable {
 		}
 	}
 	
+	
+	
+	
+	
+	
+	/////////////// BEARBEITUNG BENÖTIGT
+	
+	
+	
+	
 	public void checkSpielstart(){
 		
 		if(connected == spieleranzahl) {
-			frame.dispose();
-			brett = new Thread(new Spielbrett());
-			brett.start();
-			Thread anfangsauswahl = new Thread(new Anfangsauswahl());
-			anfangsauswahl.start();
 			if(dieserspieler == 1) {
 				Thread schicken = new Thread(new Kartenschicken());
 				schicken.start();
 			}
+			frame.dispose();
+			brett = new Thread(new Spielbrett());
+			brett.start();
+			Thread spielbrett = new Thread(new Spielbrett());
+			spielbrett.start();
 		}
 	}
 
+	
+	
+	
+	
 	public class Anfangsauswahl implements Runnable, ActionListener {
 		
 		private ItemHandler handler = new ItemHandler(clientübergabe);
@@ -1080,6 +1095,7 @@ public class Client implements Runnable {
 		
 		@Override
 		public void run() {
+			
 			spielbrettladen();
 		}
 		
@@ -1264,11 +1280,12 @@ public class Client implements Runnable {
 			spielbrett.repaint();
 			
 			//ausgewürfelte Rohstoffzahlen, JBoxen fürs Bauen werden ins Spielbrett geladen
+			
+			boxen.kreuzungenerstellen();
+			boxen.wegeerstellen();
 			boxen.wegboxladen(spielbrett);
 			boxen.boxenladen(spielbrett);
 			kartenzahlen.zahlenladen(spielbrett);
-			boxen.kreuzungenerstellen();
-			boxen.wegeerstellen();
 			
 			hintergrundbrett = new JLabel("");
 			ImageIcon img = new ImageIcon(getClass().getResource("/JavaSiedler1x.jpg"));
@@ -1276,7 +1293,7 @@ public class Client implements Runnable {
 			hintergrundbrett.setBounds(0, 0, 1500, 978);
 			spielbrett.add(hintergrundbrett);
 			
-			spielbrett.setVisible(false);
+			spielbrett.setVisible(true);
 		}
 		
 		public boolean amZug(){
